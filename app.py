@@ -5,7 +5,8 @@ app = Flask(__name__, template_folder='templates')  # Look for templates in "tem
 
 # Setup Google Gemini API
 def setup_client():
-    api_key = "AIzaSyAYSDaesTR47kukyiHoYwGC6hsPnNxpOuY"  # Replace with a valid API key
+    api_key = os.getenv("GOOGLE_API_KEY")  # Get API key from Render environment
+  # Replace with a valid API key
     genai.configure(api_key=api_key)
     return genai.GenerativeModel('gemini-pro')
 
